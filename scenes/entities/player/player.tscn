@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://cl74b3n23jnjt"]
+
+[ext_resource type="PackedScene" uid="uid://b68vs0af4e7hi" path="res://scenes/entities/entity.tscn" id="1_3xfb3"]
+[ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="2_yrl14"]
+[ext_resource type="Texture2D" uid="uid://clgaqns85oxlp" path="res://graphics/guns/crosshair.png" id="4_0d6p6"]
+[ext_resource type="PackedScene" uid="uid://dlnc2t1mhdob0" path="res://scenes/entities/player/player_graphics.tscn" id="5_a0d3g"]
+[ext_resource type="Script" path="res://scenes/entities/player/Crosshair.gd" id="5_e3t0x"]
+[ext_resource type="Texture2D" uid="uid://djbe8xgpgw7dj" path="res://graphics/guns/projectiles/explosion2.png" id="6_hwm6a"]
+[ext_resource type="PackedScene" uid="uid://pbff6olog7v0" path="res://scenes/entities/player/health_circle.tscn" id="7_yr06t"]
+[ext_resource type="AudioStream" uid="uid://c1vllheackocx" path="res://audio/dash.wav" id="8_ilbdt"]
+[ext_resource type="Script" path="res://scenes/levels/retry_screen_2.gd" id="9_c8syh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gcoc1"]
+radius = 4.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jct8n"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hqp6e"]
+particle_flag_disable_z = true
+initial_velocity_min = 205.67
+initial_velocity_max = 279.29
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.34
+anim_speed_max = 1.91
+
+[node name="Player" groups=["Player"] instance=ExtResource("1_3xfb3")]
+collision_layer = 2
+script = ExtResource("2_yrl14")
+speed = 200
+acceleration = 700
+friction = 900
+dash_cooldown = 0.5
+jump_strength = 300
+gun_jump_strength = 180
+gravity = 600
+terminal_velocity = 500
+crosshair_distance = 20
+ak_cooldown = 0.5
+shotgun_cooldown = 1.2
+rocket_cooldown = 1.5
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_gcoc1")
+
+[node name="Camera2D" type="Camera2D" parent="." index="1"]
+zoom = Vector2(5, 5)
+
+[node name="Coyote" type="Timer" parent="Timers" index="0"]
+wait_time = 0.15
+one_shot = true
+
+[node name="JumpBuffer" type="Timer" parent="Timers" index="1"]
+wait_time = 0.25
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="Timers" index="2"]
+one_shot = true
+
+[node name="AKReload" type="Timer" parent="Timers" index="3"]
+one_shot = true
+
+[node name="ShotgunReload" type="Timer" parent="Timers" index="4"]
+one_shot = true
+
+[node name="RocketReload" type="Timer" parent="Timers" index="5"]
+one_shot = true
+
+[node name="Crosshair" type="Sprite2D" parent="." index="3"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_0d6p6")
+script = ExtResource("5_e3t0x")
+
+[node name="PlayerGraphics" parent="." index="4" instance=ExtResource("5_a0d3g")]
+position = Vector2(0, -7.5)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
+material = SubResource("CanvasItemMaterial_jct8n")
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_hqp6e")
+texture = ExtResource("6_hwm6a")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+
+[node name="HealthCircle" parent="." index="6" instance=ExtResource("7_yr06t")]
+
+[node name="DashSound" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("8_ilbdt")
+
+[node name="RetryScreen" type="Node2D" parent="." index="9"]
+script = ExtResource("9_c8syh")
+
+[node name="DeathLabel" type="Label" parent="RetryScreen" index="0"]
+offset_left = -28.0
+offset_right = 55.0
+offset_bottom = 26.0
+text = "YOU DIED"
+
+[node name="RetryButton" type="Button" parent="RetryScreen" index="1"]
+offset_top = -31.0
+offset_right = 56.0
+action_mode = 0
+text = "RETRY"

@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://bwxy1m04lonjx"]
+
+[ext_resource type="PackedScene" uid="uid://b68vs0af4e7hi" path="res://scenes/entities/entity.tscn" id="1_ba8pt"]
+[ext_resource type="Script" path="res://scenes/entities/drone.gd" id="2_k6qqf"]
+[ext_resource type="Texture2D" uid="uid://brbybbdwd8ykl" path="res://graphics/entities/drone.png" id="2_peu8h"]
+[ext_resource type="Shader" uid="uid://bx8p3kj3nqdw5" path="res://shaders/flash.tres" id="3_8ceg3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7owrb"]
+radius = 8.06226
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pv5sr"]
+shader = ExtResource("3_8ceg3")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Progress = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmrj3"]
+atlas = ExtResource("2_peu8h")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h00mk"]
+atlas = ExtResource("2_peu8h")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt13a"]
+atlas = ExtResource("2_peu8h")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lexke"]
+atlas = ExtResource("2_peu8h")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5j0iu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmrj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h00mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt13a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lexke")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6l07o"]
+radius = 104.043
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f38a8"]
+radius = 11.0
+
+[node name="Drone" groups=["Enemies"] instance=ExtResource("1_ba8pt")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_k6qqf")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_7owrb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_pv5sr")
+sprite_frames = SubResource("SpriteFrames_5j0iu")
+autoplay = "default"
+frame_progress = 0.108105
+
+[node name="PlayerDetectionArea" type="Area2D" parent="." index="3"]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea" index="0"]
+shape = SubResource("CircleShape2D_6l07o")
+
+[node name="CollisionDetectionArea" type="Area2D" parent="." index="4"]
+collision_layer = 16
+collision_mask = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetectionArea" index="0"]
+shape = SubResource("CircleShape2D_f38a8")
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_entered" from="CollisionDetectionArea" to="." method="_on_collision_detection_area_body_entered"]
