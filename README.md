@@ -1,6 +1,6 @@
 ### Overview
 
-This project is a technical demonstration of complex interaction systems and character logic built using C# and Godot. Beyond being a game, it serves as a testing ground for asynchronous programming, state management, and systematic debugging****
+This project is a technical demonstration of complex interaction systems and character logic built using C# and Godot. Beyond being a game, it serves as a testing ground for asynchronous programming, state management, and systematic debugging
 
 ### Key Technical Features
 
