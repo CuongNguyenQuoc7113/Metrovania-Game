@@ -2,7 +2,7 @@
 
 ## 🎮 Gameplay Preview
 <div align="center">
-  <video src="images/Metrovania.mp4" width="100%" controls autoplay muted loop>
+  <video src="images/Metrovania/Metrovania.mp4" width="100%" controls autoplay muted loop>
     Trình duyệt không hỗ trợ xem video.
   </video>
 </div>
@@ -13,15 +13,15 @@
 
 ### 1. Level Design & Environment
 Sử dụng các hệ thống ánh sáng (Light Occlusion) và khu vực kích hoạt (Trigger Zones) để tạo ra môi trường công nghiệp đầy thử thách.
-![Industrial Level Design](images/Metro1.jpg)
+![Industrial Level Design](images/Metrovania/Metro1.jpg)
 
 ### 2. Collision & Physics Auditing
 Hình ảnh dưới đây minh họa các đường kẻ Hitbox và Collision Shapes trong chế độ Debug, đảm bảo sự nhất quán 100% trong tương tác vật lý giữa nhân vật và môi trường.
-![Physics Debug Mode](images/Metro3.jpg)
+![Physics Debug Mode](images/Metrovania/Metro3.jpg)
 
 ### 3. Boss Encounter Logic
 Thiết kế cơ chế tấn công (Attack Patterns) cho Boss "Giant Claw", bao gồm việc tính toán vùng nguy hiểm và phản hồi của người chơi.
-![Boss Fight Mechanics](images/Metro2.jpg)
+![Boss Fight Mechanics](images/Metrovania/Metro2.jpg)
 
 ## 🛠 Key Technical Features
 
