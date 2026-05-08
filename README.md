@@ -1,27 +1,43 @@
-### Overview
+# Metrovania Action Platformer - Technical Showcase
 
-This project is a technical demonstration of complex interaction systems and character logic built using C# and Godot. Beyond being a game, it serves as a testing ground for asynchronous programming, state management, and systematic debugging
+![Gameplay Preview](images/Metrovania.mp4) ## 🎮 Project Overview
+Dự án này là bản demo kỹ thuật tập trung vào các hệ thống tương tác phức tạp và logic nhân vật được xây dựng bằng **C#** trên **Godot Engine**. Đây không chỉ là một trò chơi, mà còn là môi trường để tôi thử nghiệm lập trình bất đối xứng (asynchronous programming), quản lý trạng thái (state management) và hệ thống debug bài bản.
 
-### Key Technical Features
+---
 
-* Advanced Character Controller: Implemented a robust movement and combat system using C#, focusing on frame-perfect input handling and smooth state transitions.
+## 🛠 Key Technical Features
 
-* Systematic Interaction Logic: Designed decoupled systems for weapon switching and environment interaction to ensure modularity and scalability
+### 1. Advanced Character Controller
+* **C# Implementation:** Xử lý đầu vào chính xác theo từng khung hình (frame-perfect input).
+* **State Transitions:** Chuyển đổi trạng thái mượt mà giữa di chuyển, nhảy tường (wall-jump) và lướt (dash).
 
-* Collision & Physics Auditing: Developed custom solutions to resolve complex collision detection issues, ensuring 100% logical consistency in physical interactions.
+### 2. State Machine Architecture (FSM)
+* Sử dụng cấu trúc **Finite State Machine** để quản lý hành vi nhân vật.
+* Giúp giảm thiểu xung đột logic và tăng khả năng bảo trì mã nguồn (code maintainability).
 
-* State Machine Architecture: Utilized a structured Finite State Machine (FSM) to manage character behaviors, reducing logical conflicts and improving code maintainability.
+### 3. Systematic Interaction Logic
+* **Decoupled Systems:** Thiết kế các hệ thống tách biệt cho việc đổi vũ khí và tương tác môi trường.
+* Đảm bảo tính mô-đun (modularity) và khả năng mở rộng (scalability) cho dự án.
 
-### Core Competencies Demonstrated
+### 4. Collision & Physics Auditing
+* Phát triển các giải pháp tùy chỉnh để giải quyết các vấn đề phát hiện va chạm phức tạp.
+* Đảm bảo sự nhất quán 100% trong các tương tác vật lý.
 
-* Logic Auditing: Conducted extensive reviews of C# scripts to identify and resolve edge-case bugs in combat loops and movement mechanics.
+---
 
-* Performance Optimization: Refined gameplay loops to maintain high stability, simulating heavy-load scenarios to ensure seamless user experience.
+## 🧠 Core Competencies Demonstrated
+* **Logic Auditing:** Rà soát kỹ lưỡng các script C# để tìm và khắc phục lỗi edge-case trong vòng lặp chiến đấu.
+* **Performance Optimization:** Tối ưu hóa vòng lặp gameplay để duy trì độ ổn định cao ngay cả trong kịch bản tải nặng.
+* **Data Integrity:** Triển khai luồng dữ liệu cấu trúc cho thuộc tính nhân vật và hệ thống kho đồ để ngăn lỗi trạng thái.
 
-* Data Integrity: Implemented structured data flows for character attributes and inventory systems to prevent state corruption.
+---
 
-### Project Structure
+## 📂 Project Structure
+* `/Scripts`: Core C# logic (controllers, managers, system auditors).
+* `/Docs`: Tài liệu kỹ thuật và sơ đồ logic (flowcharts) được sử dụng trong quá trình phát triển.
 
-* /Scripts: Core C# logic, including controllers, managers, and system auditors.
+---
 
-* /Docs: Technical specifications and logic flowcharts used during development.
+## 🔗 Links
+* **Portfolio:** [https://cuong-nguyen-quoc-portfolio.netlify.app/](https://cuong-nguyen-quoc-portfolio.netlify.app/)
+* **Contact:** cuongnguyenquoc003@gmail.com
